@@ -18,6 +18,10 @@ const profissionaisMelhores = profissionais.map(
   }
 );
 
+const profissionaisMelhores = profissionais.map(profissional => {
+  return profissional + "a";
+})
+
 // 2) Retornar frutas com somente a primeira letra maiúscula
 const frutas = ["maçã", "banana", "Pera", "Melancia", "pêsSSEgO", "jAcA"];
 
@@ -38,8 +42,11 @@ const frutasFormatadas = frutas.map(
     return letraInicial + itemSemPrimeiraLetra;
   }
 );
+const frutasFormatadas = frutas.map(fruta => fruta[0].toUpperCase() + fruta.toLowerCase().substr(1));
+
 
 // filter(): retorna uma nova array com apenas com elementos que atendem à condição
+
 // 1) Criar nova array somente com números pares
 const num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -51,6 +58,7 @@ const numPares = num.filter(
     return ehNumPar;
   }
 )
+const pares = num.filter(n => n % 2 === 0);
 
 // 2) Criar nova array somente com profissionais da área de TI
 const pessoas = [
@@ -73,10 +81,13 @@ const profissionaisTI = pessoas.filter(
     return ehDeTI;
   }
 )
+const pessoasTI = pessoas.filter(pessoa => pessoa.area === "TI");
+
 
 // reduce(): recebe uma array e retorna um valor só. Redutor.
-// 1) Dado uma array de números, retornar a soma de todos eles
 
+// 1) Dado uma array de números, retornar a soma de todos eles
+const soma = num.reduce((acc, curr) => acc + curr);
 
 // 2) Retornar o lucro de uma empresa
 const transacoes = [
@@ -86,8 +97,20 @@ const transacoes = [
   { descricao: "salario 1", valor: 8500, tipo: "saída" }
 ];
 
+const lucro = transacoes.reduce((acc, curr) => curr.tipo === "entrada" ? acc + curr.valor : acc - curr.valor, 0)
 
 // sort(): organiza itens da array de acordo com uma verificação
+
 // 1) Organizar números de forma decrescente
+const numDecrescente = [...num].sort((a , b) => b - a);
 
 // 2) Organizar pessoas por ordem alfabética
+const pessoasAlfabetico = [...pessoas].sort((a, b) => {
+  if (a.nome < b.nome) {
+    return -1;
+  } else if (a.nome > b.nome) {
+    return 1;
+  } else {
+    return 0;
+  }
+});
