@@ -25,7 +25,7 @@ cep_input.addEventListener('change', () => {
             
         })
         .catch((erro) => {
-            cep_error.style.display = 'bloc'
+            cep_error.style.display = 'block'
         })
 })
 
